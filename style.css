@@ -1,0 +1,48 @@
+/* NORMALIZE */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+:root {
+    font-family: "Lucida Console", "Courier New", monospace;
+    --primary-color: #1A364C;
+    --secondary-color: #C4CF6C ;
+    --accent-color: #479772;
+    --primary-text-color: white;
+    --secondary-text-color: white;
+}
+
+html {
+    height: 100%;
+}
+
+a {
+    color: inherit;
+}
+
+/* UTILITY */
+.container-lg {
+    width: 80%;
+}
+
+.container-xl {
+    width: 90%;
+}
+
+.width-max {
+    width: 100%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-centered {
+    justify-content: center;
+    align-items: center;
+}
