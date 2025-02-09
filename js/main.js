@@ -1,5 +1,74 @@
 import * as calc from "./calculator.js";
-import {resetCalculation} from "./calculator.js";
+import {executeCalculation} from "./calculator.js";
+
+function numberPressed(number) {
+    currentDisplay.textContent += number;
+}
+
+function operatorButtonPressed(button) {
+    let operator = button.value;
+
+    if (currentDisplay.innerHTML === emptyScreen) {
+        return;
+    }
+
+    if (operator === "CE") {
+        clearScreen();
+        return;
+    }
+
+    if (operator === "=") {
+        handleCalculation();
+        return;
+    }
+
+    if (!calc.calculation.num1) {
+        handleOperation(operator);
+    } else {
+        handleCalculation();
+        handleOperation(operator);
+    }
+}
+
+function clearScreen() {
+    calc.resetCalculation();
+    currentDisplay.innerHTML = emptyScreen;
+    previousDisplay.innerHTML = emptyScreen;
+}
+
+function handleFloat() {
+    if (!currentDisplay.textContent.includes(".")) {
+        currentDisplay.textContent += ".";
+    }
+}
+
+function handleCalculation() {
+    if (calc.calculation.operator) {
+        calc.calculation.num2 = currentDisplay.textContent;
+        calc.executeCalculation();
+        previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator} ${calc.calculation.num2} =`;
+        currentDisplay.textContent = calc.calculation.result;
+        calc.resetCalculation();
+    }
+}
+
+function handleOperation(operator) {
+    if (operator === ".") {
+        handleFloat();
+        return;
+    }
+
+    calc.calculation.num1 = currentDisplay.textContent;
+
+    if (operator === "sqrt" || operator === "+/-") {
+        executeCalculation();
+        return;
+    }
+
+    currentDisplay.innerHTML = emptyScreen;
+    calc.calculation.operator = operator;
+    previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator}`
+}
 
 const emptyScreen = "&nbsp;";
 const currentDisplay = document.getElementById("current-display");
@@ -13,56 +82,5 @@ numbers.forEach((num) => {
 });
 
 operators.forEach((operator) => {
-    operator.addEventListener('click', (e) => operatorPressed(e.target.value));
+    operator.addEventListener('click', (e) => operatorButtonPressed(e.target));
 });
-
-document.getElementById("clear-button").addEventListener('click', () => clearScreen())
-
-function numberPressed(number) {
-    currentDisplay.textContent += number;
-}
-
-function clearScreen() {
-    resetCalculation();
-    currentDisplay.innerHTML = emptyScreen;
-    previousDisplay.innerHTML = emptyScreen;
-}
-
-function operatorPressed(operator) {
-
-    function handleCalculation() {
-        calc.calculation.num2 = currentDisplay.textContent;
-        calc.executeCalculation();
-        previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator} ${calc.calculation.num2} =`;
-        currentDisplay.textContent = calc.calculation.result;
-        calc.resetCalculation();
-    }
-
-    function handleOperation() {
-        calc.calculation.num1 = currentDisplay.textContent;
-        currentDisplay.textContent = "";
-        calc.calculation.operator = operator;
-        previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator}`
-    }
-
-    if (currentDisplay.textContent === emptyScreen) {
-        return;
-    }
-
-    if (operator === "." && !currentDisplay.textContent.includes(operator)) {
-        currentDisplay.textContent += ".";
-        return;
-    }
-
-    if (operator === "=" && calc.calculation.operator) {
-        handleCalculation();
-        return;
-    }
-
-    if (!calc.calculation.num1) {
-        handleOperation(operator);
-    } else {
-        handleCalculation();
-        handleOperation(operator);
-    }
-}

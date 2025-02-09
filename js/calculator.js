@@ -14,7 +14,7 @@ function multiply(num1, num2) {
     return num1 * num2;
 }
 
-function squareRoot(num) {
+function squareRoot(num, num2) {
     return Math.sqrt(num);
 }
 
@@ -22,7 +22,7 @@ function percentageOf(total, percentage) {
     return (percentage / 100) * total;
 }
 
-function flipSign(num) {
+function flipSign(num, num2) {
     return num * -1;
 }
 
