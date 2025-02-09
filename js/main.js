@@ -1,5 +1,4 @@
 import * as calc from "./calculator.js";
-import {executeCalculation} from "./calculator.js";
 
 function numberPressed(number) {
     currentDisplay.textContent += number;
@@ -59,15 +58,13 @@ function handleOperation(operator) {
     }
 
     calc.calculation.num1 = currentDisplay.textContent;
-
-    if (operator === "sqrt" || operator === "+/-") {
-        executeCalculation();
-        return;
-    }
-
     currentDisplay.innerHTML = emptyScreen;
     calc.calculation.operator = operator;
     previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator}`
+
+    if (operator === "sqrt" || operator === "flip") {
+        handleCalculation();
+    }
 }
 
 const emptyScreen = "&nbsp;";

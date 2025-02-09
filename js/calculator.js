@@ -31,7 +31,7 @@ function initOperators() {
     operatorMap.set("-", subtract);
     operatorMap.set("/", divide);
     operatorMap.set("%", percentageOf);
-    operatorMap.set("+/-", flipSign);
+    operatorMap.set("flip", flipSign);
     operatorMap.set("*", multiply);
     operatorMap.set("sqrt", squareRoot);
 }
