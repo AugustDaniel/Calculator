@@ -15,6 +15,7 @@
     --accent-color: #479772;
     --primary-text-color: white;
     --secondary-text-color: white;
+    --small-padding: 0.5rem;
 }
 
 html, body {
@@ -44,7 +45,6 @@ a {
     flex-direction: column;
 }
 
-
 .flex-centered {
     justify-content: center;
     align-items: center;
@@ -67,19 +67,36 @@ main {
 
 /* CALCULATOR*/
 #calculator {
+    border: 1px solid;
 }
 
 #buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: 1fr;
-    height: 100%;
-    width: 100%;
+}
+
+#buttons button {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+    padding: 1rem;
+}
+
+#display {
+    padding: var(--small-padding);
+}
+
+#current-display, #previous-display {
+    text-align: right;
+}
+
+#previous-display {
+    color: var(--secondary-color);
 }
 
 /* FOOTER */
 footer {
-    padding: 0.5rem;
+    padding: var(--small-padding);
     font-size: small;
     text-align: center;
 }
