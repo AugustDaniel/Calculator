@@ -36,15 +36,14 @@ function initOperators() {
     operatorMap.set("sqrt", squareRoot);
 }
 
-function resetCalculation() {
+export function resetCalculation() {
     for (let calculationKey in calculation) {
         calculation[calculationKey] = "";
     }
 }
 
 export function executeCalculation() {
-    resetCalculation();
-    return 2;
+    calculation.result = operatorMap.get(calculation.operator)(Number(calculation.num1), Number(calculation.num2));
 }
 
 export const calculation = {
