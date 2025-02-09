@@ -45,7 +45,7 @@ function handleCalculation() {
     if (calc.calculation.operator) {
         calc.calculation.num2 = currentDisplay.textContent;
         calc.executeCalculation();
-        previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator} ${calc.calculation.num2} =`;
+        previousDisplay.textContent = `${calc.calculation.num1} ${calc.calculation.operator}${calc.calculation.num2} =`;
         currentDisplay.textContent = calc.calculation.result;
         calc.resetCalculation();
     }
