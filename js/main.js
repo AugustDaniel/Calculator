@@ -7,12 +7,12 @@ function numberPressed(number) {
 function operatorButtonPressed(button) {
     let operator = button.value;
 
-    if (currentDisplay.innerHTML === emptyScreen) {
+    if (operator === "CE") {
+        clearScreen();
         return;
     }
 
-    if (operator === "CE") {
-        clearScreen();
+    if (currentDisplay.innerHTML === emptyScreen) {
         return;
     }
 
