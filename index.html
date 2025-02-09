@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="style.css">
     <title>Calculator</title>
 </head>
-<body>
+<body class="bg-main flex-column">
     <main>
-        <section id="calculator">
+        <section id="calculator" class="container-lg max-width">
             <section id="display">
                 <p id="previous-display">1 + 1 =</p>
                 <p id="current-display">2</p>
             </section>
-            <section id="buttons">
+            <section id="buttons flex-column">
                 <div class="calc-row">
                     <button class="operator-button">CE</button>
                     <button class="operator-button">%</button>
@@ -48,5 +48,8 @@
             </section>
         </section>
     </main>
+    <footer class="bg-primary">
+        <p>Created by August Daniel. <a href="https://github.com/AugustDaniel">Github</a></p>
+    </footer>
 </body>
 </html>

@@ -9,6 +9,7 @@
 
 :root {
     font-family: "Lucida Console", "Courier New", monospace;
+    --bg-color: #FAF9F6;
     --primary-color: #1A364C;
     --secondary-color: #C4CF6C ;
     --accent-color: #479772;
@@ -16,7 +17,8 @@
     --secondary-text-color: white;
 }
 
-html {
+html, body {
+    min-height: 100%;
     height: 100%;
 }
 
@@ -42,7 +44,39 @@ a {
     flex-direction: column;
 }
 
+
 .flex-centered {
     justify-content: center;
     align-items: center;
+}
+
+.bg-main {
+    background-color: var(--bg-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+}
+
+/* LAYOUT */
+main {
+    flex: 1;
+}
+
+/* BUTTONS */
+.calc-row {
+    display: flex;
+}
+
+.calc-row button {
+    width: 100%;
+}
+
+/* FOOTER */
+/* FOOTER */
+footer {
+    padding: 0.5rem;
+    font-size: small;
+    text-align: center;
 }
