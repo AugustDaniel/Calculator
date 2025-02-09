@@ -6,3 +6,4 @@ const numbers = document.querySelectorAll("#buttons .number-button");
 const operators = document.querySelectorAll("#buttons .operator-button");
 
 console.log(calc.add(1,2))
+
