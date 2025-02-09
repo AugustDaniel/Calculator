@@ -1,25 +1,59 @@
-export function add(num1, num2) {
+function add(num1, num2) {
     return num1 + num2;
 }
 
-export function subtract(num1, num2) {
+function subtract(num1, num2) {
     return num1 - num2;
 }
 
-export function divide(num1, num2) {
+function divide(num1, num2) {
     return num1 / num2;
 }
 
-export function multiply(num1, num2) {
+function multiply(num1, num2) {
     return num1 * num2;
 }
 
-export function squareRoot(num) {
+function squareRoot(num) {
     return Math.sqrt(num);
 }
 
-export function percentageOf(total, percentage) {
+function percentageOf(total, percentage) {
     return (percentage / 100) * total;
 }
 
+function flipSign(num) {
+    return num * -1;
+}
+
+function initOperators() {
+    operatorMap.set("+", add);
+    operatorMap.set("-", subtract);
+    operatorMap.set("/", divide);
+    operatorMap.set("%", percentageOf);
+    operatorMap.set("+/-", flipSign);
+    operatorMap.set("*", multiply);
+    operatorMap.set("sqrt", squareRoot);
+}
+
+function resetCalculation() {
+    for (let calculationKey in calculation) {
+        calculation[calculationKey] = "";
+    }
+}
+
+export function executeCalculation() {
+    resetCalculation();
+    return 2;
+}
+
+export const calculation = {
+    result: "",
+    num1: "",
+    num2: "",
+    operator: "",
+}
+
+const operatorMap = new Map();
+initOperators();
 
