@@ -27,6 +27,6 @@ function inverse(num) {
 }
 
 function percentageOf(total, percentage) {
-    (percentage / 100) * total;
+    return (percentage / 100) * total;
 }
 
