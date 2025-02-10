@@ -26,14 +26,23 @@ function flipSign(num, num2) {
     return num * -1;
 }
 
-function initOperators() {
-    operatorMap.set("+", add);
-    operatorMap.set("-", subtract);
-    operatorMap.set("/", divide);
-    operatorMap.set("%", percentageOf);
-    operatorMap.set("flip", flipSign);
-    operatorMap.set("*", multiply);
-    operatorMap.set("sqrt", squareRoot);
+function getOperator(operator) {
+    switch (operator) {
+        case    "+":
+            return add;
+        case    "-":
+            return subtract;
+        case    "/":
+            return divide;
+        case    "%":
+            return percentageOf;
+        case    "flip":
+            return flipSign;
+        case    "*":
+            return multiply;
+        case    "sqrt":
+            return squareRoot;
+    }
 }
 
 export function resetCalculation() {
@@ -43,7 +52,7 @@ export function resetCalculation() {
 }
 
 export function executeCalculation() {
-    calculation.result = operatorMap.get(calculation.operator)(Number(calculation.num1), Number(calculation.num2));
+    calculation.result = getOperator(calculation.operator)(Number(calculation.num1), Number(calculation.num2));
 }
 
 export const calculation = {
@@ -52,7 +61,3 @@ export const calculation = {
     num2: "",
     operator: "",
 }
-
-const operatorMap = new Map();
-initOperators();
-
